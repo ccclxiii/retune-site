@@ -2,147 +2,351 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ReTune Privacy Policy</title>
-<meta name="description" content="How the ReTune radio app handles your data: no account, no ads, no analytics of its own.">
+<meta name="description" content="How the ReTune radio app handles your data: no account, no ads, no analytics of its own. What you save stays on your phone.">
+<meta name="theme-color" content="#12130F">
+<link rel="canonical" href="https://ccclxiii.github.io/retune-site/privacy-policy.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%2300F59F%22%20d%3D%22M20.55%2C5.68l-2.2-2.2-.03-.03h-.01s-.01-.02-.02-.03c-.24-.24-.49-.46-.75-.68C15.66%2C1.21%2C13.3.37%2C10.89.37%2C7.72.37%2C4.74%2C1.78%2C2.74%2C4.24-.77%2C8.55-.3%2C14.81%2C3.7%2C18.56c.04.04.07.08.11.12l1.87%2C1.87c1.99%2C1.99%2C4.63%2C3.08%2C7.43%2C3.08%2C3.02%2C0%2C5.9-1.3%2C7.9-3.57%2C3.65-4.15%2C3.45-10.47-.46-14.38ZM17.1%2C15.95c-1.58%2C1.94-3.89%2C2.95-6.22%2C2.95-1.78%2C0-3.57-.59-5.06-1.8-.12-.1-.24-.21-.36-.31-.64-.59-1.16-1.26-1.57-1.98-.28-.49-.5-1.01-.66-1.55-.77-2.48-.32-5.28%2C1.44-7.44%2C1.58-1.94%2C3.89-2.95%2C6.22-2.95.77%2C0%2C1.54.11%2C2.28.33.49.14.96.34%2C1.42.58.1.05.19.1.29.16l-3.36%2C4.12.17.14%2C1.84%2C1.5%2C3.36-4.12c2.56%2C2.89%2C2.73%2C7.29.21%2C10.38Z%22%2F%3E%3C%2Fsvg%3E">
+<script>
+  // The language to show before anything is drawn: #en or #el in the address, else the browser's first language.
+  (function () {
+    var hash = location.hash.slice(1);
+    var first = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+    var lang = hash === 'en' || hash === 'el' ? hash : /^el\b/i.test(first) ? 'el' : 'en';
+    document.documentElement.setAttribute('data-show', lang);
+    document.documentElement.lang = lang;
+  })();
+</script>
 <style>
-  :root { --bg: #12130F; --fg: #F2F7F4; --muted: #93A8A2; --accent: #00F59F; --line: #1E3433; color-scheme: dark; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, "Segoe UI", Roboto, Arial, sans-serif; }
-  main { max-width: 42rem; margin: 0 auto; padding: 2rem max(16px, env(safe-area-inset-right, 0px)) 3rem max(16px, env(safe-area-inset-left, 0px)); }
-  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .25rem; }
-  h2 { font-size: 1.15rem; margin: 2rem 0 .5rem; }
-  p, ul { margin: .5rem 0; }
-  ul { padding-left: 1.2rem; }
-  .date { color: var(--muted); }
-  a { color: var(--accent); }
-  hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
+  :root {
+    --bg: #12130F;
+    --surface: #002629;
+    --line: #1E3433;
+    --fg: #F2F7F4;
+    --muted: #93A8A2;
+    --accent: #00F59F;
+    --accent-soft: rgba(0, 245, 159, .12);
+    --on-accent: #12130F;
+    --radius: 16px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  .wrap {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0 max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+  }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; }
+  .brand { display: inline-flex; padding: 6px 0; }
+  .brand svg { display: block; height: 22px; width: auto; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  footer { display: flex; align-items: center; gap: 12px; margin-top: 64px; padding: 24px 0 max(40px, env(safe-area-inset-bottom)); border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  footer svg { flex: none; width: 24px; height: 24px; }
+  footer p { margin: 0; }
+
+  /* Without the script both languages show; with it, only the chosen one. */
+  html[data-show="en"] #el, html[data-show="el"] #en { display: none; }
+  /* Opening …#el must not scroll the top bar (logo, EN / ΕΛ) out of view. */
+  article { scroll-margin-top: 120px; }
+
+  .langs { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--surface); }
+  .langs a {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 48px; min-height: 36px; padding: 0 14px;
+    border-radius: 999px; color: var(--muted);
+    font-size: 14px; font-weight: 700; text-decoration: none;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out;
+  }
+  .langs a[aria-current="true"] { background: var(--accent); color: var(--on-accent); }
+
+  .hero { padding: 36px 0 4px; }
+  .eyebrow { margin: 0 0 10px; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  h1 { margin: 0; font-size: clamp(2.2rem, 7vw, 3.2rem); line-height: 1.08; font-weight: 800; letter-spacing: -.02em; }
+  .date { display: inline-block; margin: 18px 0 0; padding: 4px 12px; border-radius: 999px; background: var(--surface); color: var(--muted); font-size: 14px; }
+  .lead { margin: 20px 0 0; max-width: 38rem; font-size: 1.125rem; }
+
+  h2 { margin: 56px 0 14px; font-size: 1.35rem; line-height: 1.3; font-weight: 800; letter-spacing: -.01em; }
+  p, ul { margin: 12px 0; }
+  ul.plain { padding-left: 1.25rem; }
+  ul.plain li { margin: 6px 0; }
+  ul.plain li::marker { color: var(--accent); }
+
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+  .card { padding: 18px; border-radius: var(--radius); background: var(--surface); }
+  .icon { display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 12px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); }
+  .icon svg { width: 22px; height: 22px; }
+  .card h3 { margin: 0 0 4px; font-size: 1rem; line-height: 1.35; }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; line-height: 1.5; }
+
+  .rows { list-style: none; margin: 16px 0; padding: 0; border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+  .rows li { padding: 16px 18px; }
+  .rows li + li { border-top: 1px solid var(--line); }
+  .rows strong { display: block; margin-bottom: 2px; }
+  .rows span { color: var(--muted); }
+
+  .note { padding: 16px 18px; border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); }
+
+  @media (prefers-reduced-motion: reduce) { .langs a { transition: none; } }
+  @media print {
+    html[data-show] #en, html[data-show] #el { display: block; }
+    .langs { display: none; }
+    body { background: #fff; color: #000; }
+    .card, .rows, .note, .date { background: none; border: 1px solid #ccc; }
+    .card p, .rows span, .date { color: #333; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <h1>ReTune Privacy Policy</h1>
-  <p class="date">Last updated: 5 November 2026</p>
 
-  <p>ReTune is an Android radio app made by an independent developer. For anything about this policy, open an issue at <a href="https://github.com/ccclxiii/retune-site/issues">github.com/ccclxiii/retune-site/issues</a>.</p>
+<!-- Icons (Lucide, ISC licence), drawn once and used in both languages. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-account" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m17 8 5 5"/><path d="m22 8-5 5"/></symbol>
+  <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-radio" viewBox="0 0 24 24"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M7 8h10"/><path d="M7 12h6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+</svg>
 
-  <h2>The short version</h2>
-  <ul>
-    <li>ReTune has no account and no sign-up.</li>
-    <li>It has no ads and no analytics of its own.</li>
-    <li>ReTune has no server. We never receive your stations, songs, schedule or settings.</li>
-    <li>When you play a station, your phone connects to that station directly, as with any radio app.</li>
-  </ul>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./" aria-label="ReTune"><svg viewBox="0 0 1035.69 166.44" aria-hidden="true"><path fill="#F2F7F4" d="M4.78,4.06h40.86l.82,21.58C54.53,9.17,69.85.77,87.65.77c9.39,0,17.3,2.47,20.59,3.62l-3.3,37.73c-4.28-1.48-11.2-3.62-19.6-3.62-18.62,0-38.22,10.05-38.22,42.67v81.05H4.78V4.06Z"/><path fill="#F2F7F4" d="M110.84,82.97C111.01,34.7,145.27.77,192.23.77c43.49,0,76.61,29.16,76.61,77.1,0,5.77-.5,11.7-1.49,17.96h-114.33c3.14,18.62,22.08,31.63,42.17,31.63,15.66,0,29.16-7.25,39.37-22.24l29.98,22.4c-14.82,24.71-42.5,38.05-70.34,38.05-50.74,0-83.37-36.57-83.37-82.7ZM229.46,67.49c-2.14-17.63-16.64-31.14-36.74-31.14s-36.73,13.18-39.04,31.14h75.78Z"/><path fill="#F2F7F4" d="M414.52,4.06h136.58v33.71h-48.2v124.6h-40.17V37.77h-48.2V4.06Z"/><path fill="#F2F7F4" d="M569.02,100.47V4.06h40.17v96.56c0,17.33,12.45,28.36,31.03,28.36s30.88-11.02,30.88-28.36V4.06h40.17v96.41c0,39.38-27.57,64.89-71.05,64.89s-71.2-25.52-71.2-64.89Z"/><path fill="#F2F7F4" d="M775.24,162.37h-39.39V4.06h33.4l77.5,95.3V4.06h39.39v158.31h-33.4l-77.5-94.36v94.36Z"/><path fill="#F2F7F4" d="M910.73,4.06h111.59v33.56h-71.42v28.19h68.99v32.13h-68.99v30.88h80.03v33.55h-120.19V4.06Z"/><path fill="#00F59F" d="M378.51,78.33c-9.39,11.52-23.07,17.49-36.86,17.49-10.56,0-21.19-3.5-30.01-10.7-.73-.6-1.44-1.22-2.13-1.85-3.8-3.48-6.9-7.46-9.3-11.76-1.64-2.93-2.96-6-3.93-9.16-4.54-14.69-1.88-31.3,8.56-44.11,9.39-11.52,23.07-17.49,36.86-17.49,4.55,0,9.1.65,13.52,1.97,2.88.85,5.69,1.99,8.41,3.41.58.3,1.16.62,1.73.95l-26.2,30.7,11.91,9.71,26.2-30.71c15.19,17.13,16.18,43.22,1.24,61.53Z"/></svg></a>
+    <nav class="langs" aria-label="Language / Γλώσσα">
+      <a href="#en" hreflang="en" lang="en" aria-label="English">EN</a>
+      <a href="#el" hreflang="el" lang="el" aria-label="Ελληνικά">ΕΛ</a>
+    </nav>
+  </header>
 
-  <h2>What stays on your phone</h2>
-  <p>These are saved only on your phone, and we can't see them:</p>
-  <ul>
-    <li>Your saved stations, folders, car presets, schedule, alarms and saved songs.</li>
-    <li>Your settings, including your car's Bluetooth name if you set one in car mode.</li>
-  </ul>
-  <p>Android's cloud backup is turned off for ReTune. The light sensor (car mode's automatic display) and the battery level (car mode's display) are read on the phone and go nowhere.</p>
-  <p>On the first start, ReTune reads your country from your SIM, network or region setting, so Explore opens on your own stations. No location permission is used.</p>
+  <main>
+    <article id="en" lang="en">
+      <div class="hero">
+        <p class="eyebrow">ReTune for Android</p>
+        <h1>Privacy policy</h1>
+        <p class="date">Last updated: 6 November 2026</p>
+        <p class="lead">ReTune is an Android radio app made by an independent developer. This page explains, in plain words, what stays on your phone and what leaves it.</p>
+      </div>
 
-  <h2>What leaves your phone</h2>
-  <p>Every internet connection shows your IP address to the server at the other end. ReTune connects to these:</p>
-  <ul>
-    <li><strong>Radio stations.</strong> The station you play, or the company that hosts its stream.</li>
-    <li><strong>Radio Browser</strong> (radio-browser.info), the open station directory. It receives the country or name you browse or search for, and a count that a station was played.</li>
-    <li><strong>GitHub and jsDelivr.</strong> ReTune downloads its station corrections and logos from them.</li>
-    <li><strong>Station websites.</strong> ReTune may load a station's own web page to find its logo.</li>
-    <li><strong>News outlets.</strong> If car mode's news line is on, ReTune downloads the headline feeds of the outlets you've chosen. You can turn this off in Settings.</li>
-    <li><strong>Google Cast.</strong> ReTune looks for TVs and speakers on your Wi-Fi. Google's Cast library sends Google logs about its use, such as device discovery and casting sessions, without identifiers traceable to you. Google says it keeps them for a short time and doesn't share them with third parties. See <a href="https://developers.google.com/cast/docs/android_sender/data_disclosure">Google's disclosure</a>.</li>
-    <li><strong>Links you choose to open.</strong> Spotify, YouTube, TuneMyMusic and station websites have their own privacy policies. "Make a playlist" only copies the song list to your clipboard; you decide where to paste it.</li>
-  </ul>
-  <p>We don't sell or share any data, because we don't have any.</p>
+      <h2>The short version</h2>
+      <ul class="cards">
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-account"/></svg></div>
+          <h3>No account</h3>
+          <p>No sign-up, no login, no profile.</p>
+        </li>
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-ban"/></svg></div>
+          <h3>No ads or analytics</h3>
+          <p>ReTune has none of its own. Google Cast's logs are explained below.</p>
+        </li>
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-phone"/></svg></div>
+          <h3>Saved on your phone</h3>
+          <p>ReTune has no server. Your stations, songs, schedule and settings never reach us.</p>
+        </li>
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-radio"/></svg></div>
+          <h3>Stations play directly</h3>
+          <p>Your phone connects straight to the station, as with any radio app.</p>
+        </li>
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-message"/></svg></div>
+          <h3>Suggestions: only what you type</h3>
+          <p>If you suggest a station, we receive only what you write in that form.</p>
+        </li>
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-shield"/></svg></div>
+          <h3>Nothing sold or shared</h3>
+          <p>We don't sell or share any data.</p>
+        </li>
+      </ul>
 
-  <h2>Permissions</h2>
-  <ul>
-    <li><strong>Internet and network state:</strong> to play stations and reconnect when the signal returns.</li>
-    <li><strong>Notifications:</strong> player controls and ringing alarms.</li>
-    <li><strong>Alarms &amp; reminders, full-screen alarms, start at boot:</strong> so alarms and time slots start on time, also after a restart.</li>
-    <li><strong>Nearby devices (Bluetooth):</strong> only if you set up car mode, to notice when your car connects. The name is compared on your phone.</li>
-    <li><strong>Modify audio settings:</strong> volume levelling and the equalizer.</li>
-    <li><strong>Foreground services and wake lock:</strong> to keep playing with the screen off.</li>
-  </ul>
+      <h2>What stays on your phone</h2>
+      <p>These are saved only on your phone, and we can't see them:</p>
+      <ul class="plain">
+        <li>Your saved stations, folders, car presets, schedule, alarms and saved songs.</li>
+        <li>Your settings, including your car's Bluetooth name if you set one in car mode.</li>
+      </ul>
+      <p>Android's cloud backup is turned off for ReTune. The light sensor (car mode's automatic display) and the battery level (car mode's display) are read on the phone and go nowhere.</p>
+      <p>On the first start, ReTune reads your country from your SIM, network or region setting, so Explore opens on your own stations. No location permission is used.</p>
 
-  <h2>Keeping and deleting your data</h2>
-  <p>We keep nothing about you, so there's nothing for us to delete. To remove everything from your phone, uninstall ReTune or clear its data in Android's settings.</p>
+      <h2>What leaves your phone</h2>
+      <p>Every internet connection shows your IP address to the server at the other end. ReTune connects to these:</p>
+      <ul class="rows">
+        <li><strong>Radio stations</strong><span>The station you play, or the company that hosts its stream.</span></li>
+        <li><strong>Radio Browser</strong><span>radio-browser.info, the open station directory. It receives the country or name you browse or search for, and a count that a station was played.</span></li>
+        <li><strong>GitHub and jsDelivr</strong><span>ReTune downloads its station corrections and logos from them.</span></li>
+        <li><strong>Station websites</strong><span>ReTune may load a station's own web page to find its logo.</span></li>
+        <li><strong>News outlets</strong><span>If car mode's news line is on, ReTune downloads the headline feeds of the outlets you've chosen. You can turn this off in Settings.</span></li>
+        <li><strong>Station suggestions</strong><span>If you send one from Settings → About → Missing a station?, what you typed there (the station's name, where it plays, a link) goes through a Google Form to a Google Sheet that only we can see. It doesn't include your name, email or anything else about you, so please don't type personal details there. Google stores it under <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</span></li>
+        <li><strong>Google Cast</strong><span>ReTune looks for TVs and speakers on your Wi-Fi. Google's Cast library sends Google logs about its use, such as device discovery and casting sessions, without identifiers traceable to you. Google says it keeps them for a short time and doesn't share them with third parties. See <a href="https://developers.google.com/cast/docs/android_sender/data_disclosure">Google's disclosure</a>.</span></li>
+        <li><strong>Links you choose to open</strong><span>Spotify, YouTube, TuneMyMusic and station websites have their own privacy policies. "Make a playlist" only copies the song list to your clipboard; you decide where to paste it.</span></li>
+      </ul>
+      <p class="note">We don't sell or share any data. A station suggestion is used only to add that station.</p>
 
-  <h2>Security</h2>
-  <p>Your saved data stays in ReTune's private storage on your phone. ReTune uses encrypted connections wherever the service offers them. Some radio stations only stream over unencrypted HTTP, and ReTune plays those too.</p>
+      <h2>Permissions</h2>
+      <ul class="rows">
+        <li><strong>Internet and network state</strong><span>To play stations and reconnect when the signal returns.</span></li>
+        <li><strong>Notifications</strong><span>Player controls and ringing alarms.</span></li>
+        <li><strong>Alarms &amp; reminders, full-screen alarms, start at boot</strong><span>So alarms and time slots start on time, also after a restart.</span></li>
+        <li><strong>Nearby devices (Bluetooth)</strong><span>Only if you set up car mode, to notice when your car connects. The name is compared on your phone.</span></li>
+        <li><strong>Modify audio settings</strong><span>Volume levelling and the equalizer.</span></li>
+        <li><strong>Foreground services and wake lock</strong><span>To keep playing with the screen off.</span></li>
+      </ul>
 
-  <h2>Children</h2>
-  <p>ReTune isn't aimed at children under 13. We don't knowingly collect anything from anyone, including children.</p>
+      <h2>Keeping and deleting your data</h2>
+      <p>We keep nothing about you. Station suggestions carry no name or address, so we can't tell which one is yours, and we delete them once we've looked at them. To remove everything from your phone, uninstall ReTune or clear its data in Android's settings.</p>
 
-  <h2>Your rights</h2>
-  <p>You have rights over your personal data under laws such as the GDPR. As we hold none, any request will usually be answered with that confirmation. For data held by a station or another service above, please contact them. You can also complain to your national data protection authority.</p>
+      <h2>Security</h2>
+      <p>Your saved data stays in ReTune's private storage on your phone. ReTune uses encrypted connections wherever the service offers them. Some radio stations only stream over unencrypted HTTP, and ReTune plays those too.</p>
 
-  <h2>Changes</h2>
-  <p>If this policy changes, the new version appears on this page with a new date.</p>
+      <h2>Children</h2>
+      <p>ReTune isn't aimed at children under 13. We don't knowingly collect personal data from anyone, including children.</p>
 
-  <hr>
+      <h2>Your rights</h2>
+      <p>You have rights over your personal data under laws such as the GDPR. As we hold none, any request will usually be answered with that confirmation. For data held by a station or another service above, please contact them. You can also complain to your national data protection authority.</p>
 
-  <div lang="el">
-    <h1>Πολιτική απορρήτου του ReTune</h1>
-    <p class="date">Τελευταία ενημέρωση: 5 Νοεμβρίου 2026</p>
+      <h2>Changes</h2>
+      <p>If this policy changes, the new version appears on this page with a new date.</p>
 
-    <p>Το ReTune είναι μια εφαρμογή ραδιοφώνου για Android, από ανεξάρτητο δημιουργό. Για οτιδήποτε σχετικό με αυτή την πολιτική, άνοιξε ένα θέμα (issue) στο <a href="https://github.com/ccclxiii/retune-site/issues">github.com/ccclxiii/retune-site/issues</a>.</p>
+      <h2>Contact</h2>
+      <p>For anything about this policy, open an issue at <a href="https://github.com/ccclxiii/retune-site/issues">github.com/ccclxiii/retune-site/issues</a>.</p>
+    </article>
 
-    <h2>Με λίγα λόγια</h2>
-    <ul>
-      <li>Το ReTune δεν έχει λογαριασμό ούτε εγγραφή.</li>
-      <li>Δεν έχει διαφημίσεις ούτε δικά του εργαλεία ανάλυσης χρήσης.</li>
-      <li>Το ReTune δεν έχει διακομιστή. Δεν λαμβάνουμε ποτέ τους σταθμούς, τα τραγούδια, το πρόγραμμα ή τις ρυθμίσεις σου.</li>
-      <li>Όταν παίζεις έναν σταθμό, το κινητό σου συνδέεται απευθείας με τον σταθμό, όπως σε κάθε εφαρμογή ραδιοφώνου.</li>
-    </ul>
+    <article id="el" lang="el">
+      <div class="hero">
+        <p class="eyebrow">ReTune για Android</p>
+        <h1>Πολιτική απορρήτου</h1>
+        <p class="date">Τελευταία ενημέρωση: 6 Νοεμβρίου 2026</p>
+        <p class="lead">Το ReTune είναι μια εφαρμογή ραδιοφώνου για Android, από ανεξάρτητο δημιουργό. Εδώ εξηγούμε απλά τι μένει στο κινητό σου και τι βγαίνει από αυτό.</p>
+      </div>
 
-    <h2>Τι μένει στο κινητό σου</h2>
-    <p>Τα παρακάτω αποθηκεύονται μόνο στο κινητό σου και δεν μπορούμε να τα δούμε:</p>
-    <ul>
-      <li>Οι σταθμοί, οι φάκελοι, οι προεπιλογές αυτοκινήτου, το πρόγραμμα, τα ξυπνητήρια και τα τραγούδια που κράτησες.</li>
-      <li>Οι ρυθμίσεις σου, μαζί με το όνομα Bluetooth του αυτοκινήτου σου, αν το όρισες.</li>
-    </ul>
-    <p>Το αντίγραφο ασφαλείας του Android στο cloud είναι κλειστό για το ReTune. Ο αισθητήρας φωτός και η στάθμη της μπαταρίας (για την οθόνη της λειτουργίας αυτοκινήτου) διαβάζονται στο κινητό και δεν πηγαίνουν πουθενά.</p>
-    <p>Στο πρώτο άνοιγμα, το ReTune διαβάζει τη χώρα σου από την κάρτα SIM, το δίκτυο ή τη ρύθμιση περιοχής, για να ανοίξει η Εξερεύνηση στους σταθμούς σου. Δεν χρησιμοποιείται άδεια τοποθεσίας.</p>
+      <h2>Με λίγα λόγια</h2>
+      <ul class="cards">
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-account"/></svg></div>
+          <h3>Χωρίς λογαριασμό</h3>
+          <p>Χωρίς εγγραφή, σύνδεση ή προφίλ.</p>
+        </li>
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-ban"/></svg></div>
+          <h3>Χωρίς διαφημίσεις ή ανάλυση χρήσης</h3>
+          <p>Το ReTune δεν έχει δικά του. Τα αρχεία του Google Cast εξηγούνται παρακάτω.</p>
+        </li>
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-phone"/></svg></div>
+          <h3>Αποθηκευμένα στο κινητό σου</h3>
+          <p>Το ReTune δεν έχει διακομιστή. Οι σταθμοί, τα τραγούδια, το πρόγραμμα και οι ρυθμίσεις σου δεν φτάνουν ποτέ σε εμάς.</p>
+        </li>
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-radio"/></svg></div>
+          <h3>Οι σταθμοί παίζουν απευθείας</h3>
+          <p>Το κινητό σου συνδέεται κατευθείαν με τον σταθμό, όπως σε κάθε εφαρμογή ραδιοφώνου.</p>
+        </li>
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-message"/></svg></div>
+          <h3>Προτάσεις: μόνο ό,τι γράψεις</h3>
+          <p>Αν προτείνεις έναν σταθμό, λαμβάνουμε μόνο ό,τι γράψεις σε εκείνη τη φόρμα.</p>
+        </li>
+        <li class="card">
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-shield"/></svg></div>
+          <h3>Δεν πουλάμε, δεν μοιραζόμαστε</h3>
+          <p>Δεν πουλάμε ούτε μοιραζόμαστε δεδομένα.</p>
+        </li>
+      </ul>
 
-    <h2>Τι βγαίνει από το κινητό σου</h2>
-    <p>Κάθε σύνδεση στο ίντερνετ δείχνει τη διεύθυνση IP σου στον διακομιστή στην άλλη άκρη. Το ReTune συνδέεται με τους εξής:</p>
-    <ul>
-      <li><strong>Ραδιοφωνικοί σταθμοί.</strong> Ο σταθμός που παίζεις ή η εταιρεία που φιλοξενεί τη ροή του.</li>
-      <li><strong>Radio Browser</strong> (radio-browser.info), ο ανοιχτός κατάλογος σταθμών. Λαμβάνει τη χώρα ή το όνομα που ψάχνεις και μια καταμέτρηση ότι παίχτηκε ένας σταθμός.</li>
-      <li><strong>GitHub και jsDelivr.</strong> Από εκεί το ReTune κατεβάζει τις διορθώσεις σταθμών και τα λογότυπα.</li>
-      <li><strong>Ιστοσελίδες σταθμών.</strong> Το ReTune μπορεί να ανοίξει τη σελίδα ενός σταθμού για να βρει το λογότυπό του.</li>
-      <li><strong>Ειδησεογραφικά μέσα.</strong> Αν είναι ανοιχτή η γραμμή ειδήσεων της λειτουργίας αυτοκινήτου, το ReTune κατεβάζει τους τίτλους από τα μέσα που διάλεξες. Κλείνει από τις Ρυθμίσεις.</li>
-      <li><strong>Google Cast.</strong> Το ReTune ψάχνει τηλεοράσεις και ηχεία στο Wi-Fi σου. Η βιβλιοθήκη Cast της Google στέλνει στη Google αρχεία χρήσης, όπως την εύρεση συσκευών και τις συνεδρίες Cast, χωρίς στοιχεία που οδηγούν σε εσένα. Η Google αναφέρει ότι τα κρατά για λίγο και δεν τα μοιράζεται με τρίτους. Δες τη <a href="https://developers.google.com/cast/docs/android_sender/data_disclosure">δήλωση της Google</a>.</li>
-      <li><strong>Σύνδεσμοι που επιλέγεις να ανοίξεις.</strong> Το Spotify, το YouTube, το TuneMyMusic και οι σελίδες των σταθμών έχουν τις δικές τους πολιτικές απορρήτου. Η «Δημιουργία playlist» απλώς αντιγράφει τη λίστα τραγουδιών στο πρόχειρο· εσύ αποφασίζεις πού θα την επικολλήσεις.</li>
-    </ul>
-    <p>Δεν πουλάμε ούτε μοιραζόμαστε δεδομένα, γιατί δεν έχουμε.</p>
+      <h2>Τι μένει στο κινητό σου</h2>
+      <p>Τα παρακάτω αποθηκεύονται μόνο στο κινητό σου και δεν μπορούμε να τα δούμε:</p>
+      <ul class="plain">
+        <li>Οι σταθμοί, οι φάκελοι, οι προεπιλογές αυτοκινήτου, το πρόγραμμα, τα ξυπνητήρια και τα τραγούδια που κράτησες.</li>
+        <li>Οι ρυθμίσεις σου, μαζί με το όνομα Bluetooth του αυτοκινήτου σου, αν το όρισες.</li>
+      </ul>
+      <p>Το αντίγραφο ασφαλείας του Android στο cloud είναι κλειστό για το ReTune. Ο αισθητήρας φωτός και η στάθμη της μπαταρίας (για την οθόνη της λειτουργίας αυτοκινήτου) διαβάζονται στο κινητό και δεν πηγαίνουν πουθενά.</p>
+      <p>Στο πρώτο άνοιγμα, το ReTune διαβάζει τη χώρα σου από την κάρτα SIM, το δίκτυο ή τη ρύθμιση περιοχής, για να ανοίξει η Εξερεύνηση στους σταθμούς σου. Δεν χρησιμοποιείται άδεια τοποθεσίας.</p>
 
-    <h2>Άδειες</h2>
-    <ul>
-      <li><strong>Ίντερνετ και κατάσταση δικτύου:</strong> για να παίζουν οι σταθμοί και να ξανασυνδέονται όταν επιστρέφει το σήμα.</li>
-      <li><strong>Ειδοποιήσεις:</strong> χειρισμός αναπαραγωγής και ξυπνητήρια.</li>
-      <li><strong>Ξυπνητήρια και υπενθυμίσεις, ξυπνητήρι σε πλήρη οθόνη, εκκίνηση με το άνοιγμα του κινητού:</strong> για να ξεκινούν στην ώρα τους τα ξυπνητήρια και το πρόγραμμα, και μετά από επανεκκίνηση.</li>
-      <li><strong>Κοντινές συσκευές (Bluetooth):</strong> μόνο αν ορίσεις το αυτοκίνητό σου, για να καταλαβαίνει πότε συνδέθηκε. Το όνομα συγκρίνεται στο κινητό σου.</li>
-      <li><strong>Αλλαγή ρυθμίσεων ήχου:</strong> εξισορρόπηση έντασης και ισοσταθμιστής.</li>
-      <li><strong>Υπηρεσίες προσκηνίου και κλείδωμα αφύπνισης:</strong> για να συνεχίζει η αναπαραγωγή με σβηστή οθόνη.</li>
-    </ul>
+      <h2>Τι βγαίνει από το κινητό σου</h2>
+      <p>Κάθε σύνδεση στο ίντερνετ δείχνει τη διεύθυνση IP σου στον διακομιστή στην άλλη άκρη. Το ReTune συνδέεται με τους εξής:</p>
+      <ul class="rows">
+        <li><strong>Ραδιοφωνικοί σταθμοί</strong><span>Ο σταθμός που παίζεις ή η εταιρεία που φιλοξενεί τη ροή του.</span></li>
+        <li><strong>Radio Browser</strong><span>Το radio-browser.info, ο ανοιχτός κατάλογος σταθμών. Λαμβάνει τη χώρα ή το όνομα που ψάχνεις και μια καταμέτρηση ότι παίχτηκε ένας σταθμός.</span></li>
+        <li><strong>GitHub και jsDelivr</strong><span>Από εκεί το ReTune κατεβάζει τις διορθώσεις σταθμών και τα λογότυπα.</span></li>
+        <li><strong>Ιστοσελίδες σταθμών</strong><span>Το ReTune μπορεί να ανοίξει τη σελίδα ενός σταθμού για να βρει το λογότυπό του.</span></li>
+        <li><strong>Ειδησεογραφικά μέσα</strong><span>Αν είναι ανοιχτή η γραμμή ειδήσεων της λειτουργίας αυτοκινήτου, το ReTune κατεβάζει τους τίτλους από τα μέσα που διάλεξες. Κλείνει από τις Ρυθμίσεις.</span></li>
+        <li><strong>Προτάσεις σταθμών</strong><span>Αν στείλεις μία από τις Ρυθμίσεις → Σχετικά → Λείπει κάποιος σταθμός;, ό,τι έγραψες εκεί (το όνομα του σταθμού, πού ακούγεται, έναν σύνδεσμο) πηγαίνει μέσω μιας φόρμας Google σε ένα υπολογιστικό φύλλο Google που βλέπουμε μόνο εμείς. Δεν περιέχει το όνομά σου, το email σου ή οτιδήποτε άλλο για εσένα, οπότε μη γράφεις εκεί προσωπικά στοιχεία. Η Google τα αποθηκεύει σύμφωνα με την <a href="https://policies.google.com/privacy">πολιτική απορρήτου της Google</a>.</span></li>
+        <li><strong>Google Cast</strong><span>Το ReTune ψάχνει τηλεοράσεις και ηχεία στο Wi-Fi σου. Η βιβλιοθήκη Cast της Google στέλνει στη Google αρχεία χρήσης, όπως την εύρεση συσκευών και τις συνεδρίες Cast, χωρίς στοιχεία που οδηγούν σε εσένα. Η Google αναφέρει ότι τα κρατά για λίγο και δεν τα μοιράζεται με τρίτους. Δες τη <a href="https://developers.google.com/cast/docs/android_sender/data_disclosure">δήλωση της Google</a>.</span></li>
+        <li><strong>Σύνδεσμοι που επιλέγεις να ανοίξεις</strong><span>Το Spotify, το YouTube, το TuneMyMusic και οι σελίδες των σταθμών έχουν τις δικές τους πολιτικές απορρήτου. Η «Δημιουργία playlist» απλώς αντιγράφει τη λίστα τραγουδιών στο πρόχειρο· εσύ αποφασίζεις πού θα την επικολλήσεις.</span></li>
+      </ul>
+      <p class="note">Δεν πουλάμε ούτε μοιραζόμαστε δεδομένα. Μια πρόταση σταθμού χρησιμοποιείται μόνο για να προστεθεί αυτός ο σταθμός.</p>
 
-    <h2>Διατήρηση και διαγραφή</h2>
-    <p>Δεν κρατάμε τίποτα για εσένα, οπότε δεν έχουμε κάτι να διαγράψουμε. Για να σβήσεις τα πάντα από το κινητό σου, απεγκατάστησε το ReTune ή καθάρισε τα δεδομένα του από τις ρυθμίσεις του Android.</p>
+      <h2>Άδειες</h2>
+      <ul class="rows">
+        <li><strong>Ίντερνετ και κατάσταση δικτύου</strong><span>Για να παίζουν οι σταθμοί και να ξανασυνδέονται όταν επιστρέφει το σήμα.</span></li>
+        <li><strong>Ειδοποιήσεις</strong><span>Χειρισμός αναπαραγωγής και ξυπνητήρια.</span></li>
+        <li><strong>Ξυπνητήρια και υπενθυμίσεις, ξυπνητήρι σε πλήρη οθόνη, εκκίνηση με το άνοιγμα του κινητού</strong><span>Για να ξεκινούν στην ώρα τους τα ξυπνητήρια και το πρόγραμμα, και μετά από επανεκκίνηση.</span></li>
+        <li><strong>Κοντινές συσκευές (Bluetooth)</strong><span>Μόνο αν ορίσεις το αυτοκίνητό σου, για να καταλαβαίνει πότε συνδέθηκε. Το όνομα συγκρίνεται στο κινητό σου.</span></li>
+        <li><strong>Αλλαγή ρυθμίσεων ήχου</strong><span>Εξισορρόπηση έντασης και ισοσταθμιστής.</span></li>
+        <li><strong>Υπηρεσίες προσκηνίου και κλείδωμα αφύπνισης</strong><span>Για να συνεχίζει η αναπαραγωγή με σβηστή οθόνη.</span></li>
+      </ul>
 
-    <h2>Ασφάλεια</h2>
-    <p>Τα δεδομένα σου μένουν στον ιδιωτικό χώρο του ReTune στο κινητό σου. Το ReTune χρησιμοποιεί κρυπτογραφημένες συνδέσεις όπου τις προσφέρει η υπηρεσία. Κάποιοι σταθμοί εκπέμπουν μόνο μέσω μη κρυπτογραφημένου HTTP και το ReTune παίζει κι αυτούς.</p>
+      <h2>Διατήρηση και διαγραφή</h2>
+      <p>Δεν κρατάμε τίποτα για εσένα. Οι προτάσεις σταθμών δεν έχουν όνομα ή διεύθυνση, οπότε δεν μπορούμε να ξέρουμε ποια είναι δική σου, και τις σβήνουμε αφού τις δούμε. Για να σβήσεις τα πάντα από το κινητό σου, απεγκατάστησε το ReTune ή καθάρισε τα δεδομένα του από τις ρυθμίσεις του Android.</p>
 
-    <h2>Παιδιά</h2>
-    <p>Το ReTune δεν απευθύνεται σε παιδιά κάτω των 13 ετών. Δεν συλλέγουμε εν γνώσει μας τίποτα από κανέναν, ούτε από παιδιά.</p>
+      <h2>Ασφάλεια</h2>
+      <p>Τα δεδομένα σου μένουν στον ιδιωτικό χώρο του ReTune στο κινητό σου. Το ReTune χρησιμοποιεί κρυπτογραφημένες συνδέσεις όπου τις προσφέρει η υπηρεσία. Κάποιοι σταθμοί εκπέμπουν μόνο μέσω μη κρυπτογραφημένου HTTP και το ReTune παίζει κι αυτούς.</p>
 
-    <h2>Τα δικαιώματά σου</h2>
-    <p>Έχεις δικαιώματα στα προσωπικά σου δεδομένα βάσει νόμων όπως ο ΓΚΠΔ (GDPR). Επειδή δεν κρατάμε κανένα, σε κάθε αίτημα συνήθως θα λάβεις αυτή την επιβεβαίωση. Για δεδομένα που κρατά ένας σταθμός ή άλλη υπηρεσία από τις παραπάνω, επικοινώνησε μαζί τους. Μπορείς επίσης να απευθυνθείς στην Αρχή Προστασίας Δεδομένων της χώρας σου.</p>
+      <h2>Παιδιά</h2>
+      <p>Το ReTune δεν απευθύνεται σε παιδιά κάτω των 13 ετών. Δεν συλλέγουμε εν γνώσει μας προσωπικά δεδομένα από κανέναν, ούτε από παιδιά.</p>
 
-    <h2>Αλλαγές</h2>
-    <p>Αν αλλάξει αυτή η πολιτική, η νέα έκδοση θα εμφανιστεί σε αυτή τη σελίδα με νέα ημερομηνία.</p>
-  </div>
-</main>
+      <h2>Τα δικαιώματά σου</h2>
+      <p>Έχεις δικαιώματα στα προσωπικά σου δεδομένα βάσει νόμων όπως ο ΓΚΠΔ (GDPR). Επειδή δεν κρατάμε κανένα, σε κάθε αίτημα συνήθως θα λάβεις αυτή την επιβεβαίωση. Για δεδομένα που κρατά ένας σταθμός ή άλλη υπηρεσία από τις παραπάνω, επικοινώνησε μαζί τους. Μπορείς επίσης να απευθυνθείς στην Αρχή Προστασίας Δεδομένων της χώρας σου.</p>
+
+      <h2>Αλλαγές</h2>
+      <p>Αν αλλάξει αυτή η πολιτική, η νέα έκδοση θα εμφανιστεί σε αυτή τη σελίδα με νέα ημερομηνία.</p>
+
+      <h2>Επικοινωνία</h2>
+      <p>Για οτιδήποτε σχετικό με αυτή την πολιτική, άνοιξε ένα θέμα (issue) στο <a href="https://github.com/ccclxiii/retune-site/issues">github.com/ccclxiii/retune-site/issues</a>.</p>
+    </article>
+  </main>
+
+  <footer>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00F59F" d="M20.55,5.68l-2.2-2.2-.03-.03h-.01s-.01-.02-.02-.03c-.24-.24-.49-.46-.75-.68C15.66,1.21,13.3.37,10.89.37,7.72.37,4.74,1.78,2.74,4.24-.77,8.55-.3,14.81,3.7,18.56c.04.04.07.08.11.12l1.87,1.87c1.99,1.99,4.63,3.08,7.43,3.08,3.02,0,5.9-1.3,7.9-3.57,3.65-4.15,3.45-10.47-.46-14.38ZM17.1,15.95c-1.58,1.94-3.89,2.95-6.22,2.95-1.78,0-3.57-.59-5.06-1.8-.12-.1-.24-.21-.36-.31-.64-.59-1.16-1.26-1.57-1.98-.28-.49-.5-1.01-.66-1.55-.77-2.48-.32-5.28,1.44-7.44,1.58-1.94,3.89-2.95,6.22-2.95.77,0,1.54.11,2.28.33.49.14.96.34,1.42.58.1.05.19.1.29.16l-3.36,4.12.17.14,1.84,1.5,3.36-4.12c2.56,2.89,2.73,7.29.21,10.38Z"/></svg>
+    <p>ReTune · radio for Android · <span lang="el">ραδιόφωνο για Android</span></p>
+  </footer>
+</div>
+
+<script>
+  // The EN / ΕΛ switch: shows one language and keeps it in the address (#en, #el) for sharing.
+  (function () {
+    var root = document.documentElement;
+    var titles = { en: 'ReTune Privacy Policy', el: 'Πολιτική απορρήτου του ReTune' };
+    var links = document.querySelectorAll('.langs a');
+    function show(lang) {
+      root.setAttribute('data-show', lang);
+      root.lang = lang;
+      document.title = titles[lang];
+      for (var i = 0; i < links.length; i++) {
+        links[i].setAttribute('aria-current', links[i].hash === '#' + lang ? 'true' : 'false');
+      }
+    }
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', function (event) {
+        event.preventDefault();
+        var lang = this.hash.slice(1);
+        show(lang);
+        history.replaceState(null, '', '#' + lang);
+        window.scrollTo(0, 0);
+      });
+    }
+    show(root.getAttribute('data-show') || 'en');
+  })();
+</script>
 </body>
 </html>
